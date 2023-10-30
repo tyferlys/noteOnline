@@ -6,6 +6,11 @@ use App\Http\Controllers\Auth\OpenAuthController;
 use App\Http\Controllers\Auth\StoreAuthController;
 use App\Http\Controllers\Main\Finders\FindPersonController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Note\DeleteNoteController;
+use App\Http\Controllers\Note\IndexNoteController;
+use App\Http\Controllers\Note\StoreNoteController;
+use App\Http\Controllers\Note\UpdateNoteController;
+use App\Http\Controllers\Note\ViewNoteController;
 use App\Http\Controllers\Profile\ExitProfileController;
 use App\Http\Controllers\Profile\IndexProfileController;
 use App\Http\Controllers\Profile\UpdateProfileController;
@@ -19,8 +24,13 @@ Route::middleware("auth")->group(function(){
     Route::get("/profile", IndexProfileController::class)->name("profile.index");
     Route::get("/profile/exit", ExitProfileController::class)->name("profile.exit");
     Route::patch("/profile", UpdateProfileController::class)->name("profile.update");
-
     Route::get("/profile/{login}", ViewProfileController::class)->name("profile.view");
+
+    Route::get("/createNote", IndexNoteController::class)->name("note.index");
+    Route::get("/note/{noteId}", ViewNoteController::class)->name("note.view");
+    Route::post("/createNote/{userId}", StoreNoteController::class)->name("note.store");
+    Route::patch("/note/{noteId}", UpdateNoteController::class)->name("note.update");
+    Route::delete("/note/{noteId}", DeleteNoteController::class)->name("note.delete");
 });
 
 Route::get("/login", IndexAuthController::class)->name("login.index");

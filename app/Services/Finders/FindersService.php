@@ -17,6 +17,6 @@ class FindersService
         if ($data["surname"] != "none")
             $users = $users->where("surname",  $data["surname"]);
 
-        return $users->offset(4 * $data["page"])->limit(4)->get();
+        return $users->offset(4 * $data["page"])->orderByDesc("id")->limit(4)->get();
     }
 }

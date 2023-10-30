@@ -39,8 +39,28 @@
                 </div>
             </form>
 
-            <div class="w-3/6">
+            <div class="w-3/6 flex flex-col gap-5">
+                @if(count($user->notes) == 0)
+                    <div class="text-2xl text-center underline">Заметок еще нет</div>
+                    @else
+                    <a href="{{route("note.index")}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white text-2xl text-center">
+                        Посмотреть все заметки
+                    </a>
+                @endif
 
+                @foreach(array_slice(array_reverse(iterator_to_array($user->notes)), 0, 3) as $note)
+                    <a href="{{route("note.view", $note->id)}}" class="block min-w-full p-6 rounded-lg bg-gray-600 text-white">
+                        <div class="text-xl">
+                            <b>Название</b>: {{$note->title}}
+                        </div>
+                        <div class="text-xl">
+                            <b>Текст</b>: {{implode(" ", array_slice(explode(" ", $note->text), 0, 15))}}
+                        </div>
+                        <div class="text-xl">
+                            <b>Дата создания</b>: {{$note->updated_at}}
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </main>

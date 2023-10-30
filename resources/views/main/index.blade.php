@@ -19,8 +19,14 @@
                     Последние заметки:
                 </div>
 
-                <div>
-
+                <div class="grid grid-cols-3 gap-5 min-w-full m-auto mt-6">
+                    @foreach($notes as $note)
+                        <a href="{{route("note.view", $note->id)}}" class="block min-w-full flex flex-col gap-5 bg-gray-600 text-white p-6 rounded-lg">
+                            <div class="text-center text-xl font-bold underline">{{$note->user->login}}</div>
+                            <div class="text-center text-xl">{{$note->title}}</div>
+                            <div class="text-center text-md">{{$note->updated_at}}</div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
 
