@@ -21,8 +21,8 @@ class StoreNoteRequest extends FormRequest
     }
     public function messages(){
         return [
-            'login.string' => "Поле обязательно для заполнения",
-            "login.required" => "Поле обязательно для заполнения",
+            'title.string' => "Поле обязательно для заполнения",
+            "title.required" => "Поле обязательно для заполнения",
 
             'text.string' => "Поле обязательно для заполнения",
             "text.required" => "Поле обязательно для заполнения",

@@ -13,7 +13,9 @@ class UpdateNoteController extends BaseController
         $data = $request->validated();
 
         $note = $this->service->getNote($noteId);
-        $note->update($data);
+
+        if($request->input("login") == $note->user->login)
+            $note->update($data);
 
         return redirect()->back();
     }
