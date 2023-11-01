@@ -12,6 +12,8 @@ class FindNoteController extends BaseController
         ]);
         $notes = $this->service->findNotes($data["text"]);
 
-        dd($notes);
+        return view("note.viewAllNote", [
+            "notes" => $notes,
+        ]);
     }
 }
