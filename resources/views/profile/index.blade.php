@@ -1,7 +1,7 @@
 @extends("layout.app")
 
 @section("main")
-    <main class="flex flex-col gap-8 w-5/6 m-auto mb-16">
+    <main class="flex flex-col gap-8 w-5/6 m-auto mb-16 min-h-[80vh]">
         <div class="flex flex-row gap-5 justify-between">
             <div class="text-4xl font-light mt-16 w-2/6">
                 Профиль
@@ -71,7 +71,7 @@
                         Создать заметку
                     </a>
                 @else
-                    <a href="{{route("note.index")}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white text-2xl text-center">
+                    <a href="{{route("note.view.all", $user->id)}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white text-2xl text-center">
                         Посмотреть все заметки
                     </a>
                     <a href="{{route("note.index")}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white text-2xl text-center">

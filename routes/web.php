@@ -10,6 +10,8 @@ use App\Http\Controllers\Note\DeleteNoteController;
 use App\Http\Controllers\Note\IndexNoteController;
 use App\Http\Controllers\Note\StoreNoteController;
 use App\Http\Controllers\Note\UpdateNoteController;
+use App\Http\Controllers\Note\ViewAllNote;
+use App\Http\Controllers\Note\ViewAllNoteController;
 use App\Http\Controllers\Note\ViewNoteController;
 use App\Http\Controllers\Profile\ExitProfileController;
 use App\Http\Controllers\Profile\IndexProfileController;
@@ -31,6 +33,7 @@ Route::middleware("auth")->group(function(){
     Route::post("/createNote/{userId}", StoreNoteController::class)->name("note.store");
     Route::patch("/note/{noteId}", UpdateNoteController::class)->name("note.update");
     Route::delete("/note/{noteId}", DeleteNoteController::class)->name("note.delete");
+    Route::get("/notes/{userId}", ViewAllNoteController::class)->name("note.view.all");
 });
 
 Route::get("/login", IndexAuthController::class)->name("login.index");

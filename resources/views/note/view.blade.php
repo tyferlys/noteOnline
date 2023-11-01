@@ -2,9 +2,16 @@
 
 @section("main")
     <main class="flex flex-col justify-center gap-8 w-5/6 m-auto mb-16 min-h-[80vh]">
-        <div class="mt-16 w-5/6 mx-auto font-light text-4xl">
-            Создание заметки
-        </div>
+
+        @if($status == 0)
+            <div class="mt-16 w-5/6 mx-auto font-light text-4xl">
+                Создатель заметки - <a class = "font-bold underline text-gray-800" href="{{route("profile.view", $note->user->login)}}">{{$note->user->login}}</a>
+            </div>
+        @else
+            <div class="mt-16 w-5/6 mx-auto font-light text-4xl">
+                Создание заметки
+            </div>
+        @endif
 
         <div class="flex flex-col">
             <form class="w-5/6 m-auto bg-white rounded-lg p-5" action="{{route("note.update", $note->id)}}" method="post">
@@ -36,7 +43,6 @@
                     <input type="submit" class="text-center block w-2/6 m-auto mt-5 text-lg p-2 bg-gray-800 text-white rounded-lg" value="Удалить"/>
                 </form>
             @endif
-
         </div>
     </main>
 @endsection
