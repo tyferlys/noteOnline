@@ -2,6 +2,7 @@
 
 namespace App\Services\Finders;
 
+use App\Models\Note;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -18,5 +19,13 @@ class FindersService
             $users = $users->where("surname",  $data["surname"]);
 
         return $users->offset(4 * $data["page"])->orderByDesc("id")->limit(4)->get();
+    }
+
+    public function findNotes($text){
+        $notes = Note::where("title", '~', "$text")
+            ->orWhere("text", '~', "$text")
+            ->get();
+
+        return $notes;
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\IndexAuthController;
 use App\Http\Controllers\Auth\RegisterAuthController;
 use App\Http\Controllers\Auth\OpenAuthController;
 use App\Http\Controllers\Auth\StoreAuthController;
+use App\Http\Controllers\Main\Finders\FindNoteController;
 use App\Http\Controllers\Main\Finders\FindPersonController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Note\DeleteNoteController;
@@ -34,6 +35,8 @@ Route::middleware("auth")->group(function(){
     Route::patch("/note/{noteId}", UpdateNoteController::class)->name("note.update");
     Route::delete("/note/{noteId}", DeleteNoteController::class)->name("note.delete");
     Route::get("/notes/{userId}", ViewAllNoteController::class)->name("note.view.all");
+
+    Route::get("/notesAll", FindNoteController::class)->name("notesAll.view");
 });
 
 Route::get("/login", IndexAuthController::class)->name("login.index");

@@ -6,8 +6,10 @@
             <div class="text-3xl font-light underline">
                 Добро пожаловать, {{$login}}
             </div>
-            <form class="w-3/6 flex flex-row gap-3">
-                <input type="text" placeholder="Найти заметку" name="note"
+            <form class="w-3/6 flex flex-row gap-3" action="{{route("notesAll.view")}}" method="get">
+                @csrf
+                @method("get")
+                <input type="text" placeholder="Найти заметку" name="text"
                        class="hover:scale-105 focus:scale-105 block w-4/6 p-2 rounded-xl border-2 border-gray-400 outline-none"/>
                 <input type="submit" value="Найти" class="block w-2/6 p-2 rounded-xl bg-gray-800 text-white"/>
             </form>
