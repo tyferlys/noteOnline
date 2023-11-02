@@ -13,4 +13,8 @@ class User extends Model
     public function notes(){
         return $this->hasMany(Note::class, "user_id", "id");
     }
+
+    public function likes(){
+        return $this->hasMany(Like::class, "user_id", "id");
+    }
 }
