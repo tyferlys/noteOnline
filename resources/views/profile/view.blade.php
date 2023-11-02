@@ -38,13 +38,13 @@
                 @if(count($user->notes) == 0)
                     <div class="text-2xl text-center underline">Заметок еще нет</div>
                     @else
-                    <a href="{{route("note.view.all", $user->id)}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
+                    <a href="{{route("note.view.all", $user->id)}}" class="transition hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
                         Посмотреть все заметки
                     </a>
                 @endif
 
                 @foreach(array_slice(array_reverse(iterator_to_array($user->notes)), 0, 3) as $note)
-                    <a href="{{route("note.view", $note->id)}}" class="block min-w-full p-6 rounded-lg bg-gray-600 text-white">
+                    <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
                         <div class="md:text-xl text-lg">
                             <b>Название</b>: {{$note->title}}
                         </div>

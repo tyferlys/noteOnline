@@ -19,15 +19,15 @@
                     @csrf
                     @method("patch")
                     <input type="text" name="title" placeholder="Название заметки" value="{{$note->title}}" {{$status==0?"disabled":""}}
-                    class="mb-6 outline-none block md:w-3/6 w-full m-auto text-center border-b-2 border-gray-800 md:text-2xl text-xl"/>
+                    class="transition hover:scale-105 mb-6 outline-none block md:w-3/6 w-full m-auto text-center border-b-2 border-gray-800 md:text-2xl text-xl"/>
 
                     <div class="w-5/6 m-auto mb-2 text-xl underline md:text-left text-center">Текст заметки:</div>
-                    <textarea {{$status==0?"disabled":""}} name="text" class="rounded-lg min-h-[40vh] resize-y md:text-lg outline-none p-4 block bg-gray-200 md:w-5/6 w-full m-auto">{{$note->text}}</textarea>
+                    <textarea {{$status==0?"disabled":""}} name="text" class="transition hover:bg-gray-300 focus:bg-gray-300 rounded-lg min-h-[40vh] resize-y md:text-lg outline-none p-4 block bg-gray-200 md:w-5/6 w-full m-auto">{{$note->text}}</textarea>
 
                     @if($status == 1)
                         <div class="flex flex-row justify-center gap-5 mt-4 md:w-5/6 m-auto">
-                            <input type="submit" value="Сохранить" class="md:w-2/6 w-3/6 text-lg p-2 bg-gray-800 text-white rounded-lg"/>
-                            <button type="reset" class="md:w-2/6 w-3/6 text-lg p-2 bg-gray-800 text-white rounded-lg">
+                            <input type="submit" value="Сохранить" class="transition hover:bg-gray-600 md:w-2/6 w-3/6 text-lg p-2 bg-gray-800 text-white rounded-lg"/>
+                            <button type="reset" class="transition hover:bg-gray-600 md:w-2/6 w-3/6 text-lg p-2 bg-gray-800 text-white rounded-lg">
                                 Очистить
                             </button>
                         </div>
@@ -38,7 +38,7 @@
                     <form action="{{route("note.delete", $note->id)}}" class="w-5/6 m-auto" method="post">
                         @csrf
                         @method("delete")
-                        <input type="submit" class="text-center block md:w-2/6 w-3/6 m-auto mt-5 text-lg p-2 bg-gray-800 text-white rounded-lg" value="Удалить"/>
+                        <input type="submit" class="transition hover:bg-gray-600 text-center block md:w-2/6 w-3/6 m-auto mt-5 text-lg p-2 bg-gray-800 text-white rounded-lg" value="Удалить"/>
                     </form>
                 @endif
 

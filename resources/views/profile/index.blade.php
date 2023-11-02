@@ -10,7 +10,7 @@
                 <div class="flex flex-col gap-2">
                     <div class="text-lg">Логин:</div>
                     <input type="text" placeholder="Ваш логин" name="login" value="{{$user->login}}" disabled
-                           class="text-center bg-gray-200 block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                           class="transition text-center bg-gray-200 block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
 
                     @error("login")
                     {{ $errors->first('login') }}
@@ -20,7 +20,7 @@
                 <div class="flex flex-col gap-2">
                     <div class="text-lg">Пароль:</div>
                     <input type="text" placeholder="Ваш пароль" name="password" value="{{$user->password}}"
-                           class="hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                           class="transition hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
 
                     @error("password")
                     {{ $errors->first('password') }}
@@ -30,7 +30,7 @@
                 <div class="flex flex-col gap-2">
                     <div class="text-lg">Имя:</div>
                     <input type="text" placeholder="Ваше имя" name="name" value="{{$user->name}}"
-                           class="hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                           class="transition hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
 
                     @error("name")
                     {{ $errors->first('name') }}
@@ -40,7 +40,7 @@
                 <div class="flex flex-col gap-2">
                     <div class="text-lg">Фамилия:</div>
                     <input type="text" placeholder="Ваша фамилия" name="surname" value="{{$user->surname}}"
-                           class="hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                           class="transition hover:scale-105 focus:scale-105 text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none"/>
 
                     @error("surname")
                     {{ $errors->first('surname') }}
@@ -48,8 +48,8 @@
                 </div>
 
                 <div class="flex flex-row gap-2 mt-3">
-                    <input type="submit" value="Сохранить" class="hover:bg-black block w-1/2 p-2 rounded-xl bg-gray-800 text-white"/>
-                    <a type="button" class="hover:bg-black text-center block w-1/2 p-2 rounded-xl bg-gray-800 text-white" href="{{route("profile.exit")}}">
+                    <input type="submit" value="Сохранить" class="transition hover:bg-gray-600 block w-1/2 p-2 rounded-xl bg-gray-800 text-white"/>
+                    <a type="button" class="transition hover:bg-gray-600 text-center block w-1/2 p-2 rounded-xl bg-gray-800 text-white" href="{{route("profile.exit")}}">
                         Выйти
                     </a>
                 </div>
@@ -61,20 +61,20 @@
                 </div>
 
                 @if(count($user->notes) == 0)
-                    <a href="{{route("note.index")}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
+                    <a href="{{route("note.index")}}" class="transition hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
                         Создать заметку
                     </a>
                 @else
-                    <a href="{{route("note.view.all", $user->id)}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
+                    <a href="{{route("note.view.all", $user->id)}}" class="transition hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
                         Посмотреть все заметки
                     </a>
-                    <a href="{{route("note.index")}}" class="hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
+                    <a href="{{route("note.index")}}" class="transition hover:scale-105 block min-w-full p-6 rounded-lg bg-white md:text-2xl text-xl text-center">
                         Создать заметку
                     </a>
                 @endif
 
                 @foreach(array_slice(array_reverse(iterator_to_array($user->notes)), 0, 3) as $note)
-                    <a href="{{route("note.view", $note->id)}}" class="block min-w-full p-6 rounded-lg bg-gray-600 text-white">
+                    <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
                         <div class="md:text-xl text-lg">
                             <b>Название</b>: {{$note->title}}
                         </div>

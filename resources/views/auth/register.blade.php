@@ -12,7 +12,7 @@
                 <div class="min-w-full flex flex-col gap-2">
                     <div class="text-lg">Логин:</div>
                     <input type="text" name="login" placeholder="Введите логин" value="{{old("login")}}"
-                           class="min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
+                           class="transition min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
                     <span class="text-red-500 text-md">
                         @error("login")
                         {{ $errors->first('login') }}
@@ -23,7 +23,7 @@
                 <div class="min-w-full flex flex-col gap-2">
                     <div class="text-lg">Пароль:</div>
                     <input type="password" name="password" placeholder="Введите пароль"
-                           class="min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
+                           class="transition min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
 
                     <span class="text-red-500 text-md">
                         @error("password")
@@ -35,7 +35,7 @@
                 <div class="min-w-full flex flex-col gap-2">
                     <div class="text-lg">Повторите пароль:</div>
                     <input type="password" name="passwordRepeat" placeholder="Введите пароль"
-                           class="min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
+                           class="transition min-w-full border-gray-600 border-2 rounded-lg outline-none p-1 hover:scale-105 focus:scale-105"/>
 
                     <span class="text-red-500 text-md">
                         @error("passwordRepeat")
@@ -44,11 +44,11 @@
                     </span>
 
                     <div class="flex flex-row justify-between">
-                        <a href="{{route("login.index")}}" class="underline hover:scale-105">Есть аккаунт?</a>
+                        <a href="{{route("login.index")}}" class="underline transition hover:text-gray-600">Есть аккаунт?</a>
                     </div>
                 </div>
 
-                <input type="submit" value="Зарегистрироваться" class="md:text-lg bg-gray-800 w-2/3 m-auto hover:bg-black text-white p-2 rounded-lg"/>
+                <input type="submit" value="Зарегистрироваться" class="transition md:text-lg bg-gray-800 w-2/3 m-auto hover:bg-gray-600 text-white p-2 rounded-lg"/>
             </form>
         </div>
     </main>

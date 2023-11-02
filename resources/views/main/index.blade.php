@@ -10,8 +10,8 @@
                 @csrf
                 @method("get")
                 <input type="text" placeholder="Найти заметку" name="text"
-                       class="hover:scale-105 focus:scale-105 block w-4/6 p-2 rounded-xl border-2 border-gray-400 outline-none"/>
-                <input type="submit" value="Найти" class="block w-2/6 p-2 rounded-xl bg-gray-800 text-white"/>
+                       class="transition hover:scale-105 focus:scale-105 block w-4/6 p-2 rounded-xl border-2 border-gray-400 outline-none"/>
+                <input type="submit" value="Найти" class="transition block w-2/6 p-2 rounded-xl bg-gray-800 hover:bg-gray-600 text-white"/>
             </form>
         </div>
 
@@ -23,7 +23,7 @@
 
                 <div class="grid md:grid-cols-3 grid-cols-1 gap-5 min-w-full m-auto mt-6">
                     @foreach($notes as $note)
-                        <a href="{{route("note.view", $note->id)}}" class="block min-w-full flex flex-col gap-5 bg-gray-600 text-white p-6 rounded-lg">
+                        <a href="{{route("note.view", $note->id)}}" class="hover:bg-gray-500 transition min-w-full flex flex-col gap-5 bg-gray-600 hover:scale-105 text-white p-6 rounded-lg">
                             <div class="text-center text-xl font-bold underline">{{$note->user->login}}</div>
                             <div class="text-center text-xl">{{$note->title}}</div>
                             <div class="text-center text-md">{{$note->updated_at}}</div>
@@ -44,24 +44,24 @@
                         <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Логин:</div>
                             <input type="text" placeholder="Никнейм пользователя" name="login"
-                                   class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                                   class="transition hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
                         <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Имя:</div>
                             <input type="text" placeholder="Имя" name="name"
-                                   class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                                   class="transition hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
                         <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Фамилия:</div>
                             <input type="text" placeholder="Фамилия" name="surname"
-                                   class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
+                                   class="transition hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
                         <div class="flex flex-row gap-2 md:w-5/6 w-full m-auto">
-                            <input type="button" id="findUsers" value="Найти" class="block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-black"/>
-                            <input type="reset" value="Очистить" class="block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-black"/>
+                            <input type="button" id="findUsers" value="Найти" class="transition block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-gray-600"/>
+                            <input type="reset" value="Очистить" class="transition block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-gray-600"/>
                         </div>
                     </form>
 
@@ -145,7 +145,7 @@
             if (jsonResult.data.length !== 0){
                 for (let item of jsonResult.data){
                     let block = `
-                        <a href="/profile/${item.login}" class="block min-w-full bg-gray-600 p-5 rounded-md hover:scale-105 hover:bg-gray-500" href="/login">
+                        <a href="/profile/${item.login}" class="transition block min-w-full bg-gray-600 p-5 rounded-md hover:scale-105 hover:bg-gray-500" href="/login">
                             <div class="text-left text-white md:text-lg">
                                 Логин: <b>${item.login}</b>
                             </div>
@@ -162,10 +162,10 @@
 
                 stringHtml += `
                     <div class="flex flex-row justify-between gap-3">
-                        <button class="bg-gray-600 w-1/2 rounded-lg p-2 text-white hover:bg-black" onclick="getUsersLast()">
+                        <button class="transition bg-gray-800 w-1/2 rounded-lg p-2 text-white hover:bg-gray-600" onclick="getUsersLast()">
                             Назад
                         </button>
-                        <button class="bg-gray-600 w-1/2 rounded-lg text-white hover:bg-black" onclick="getUsersNext(1)">
+                        <button class="transition bg-gray-800 w-1/2 rounded-lg text-white hover:bg-gray-600" onclick="getUsersNext(1)">
                             Вперед
                         </button>
                     </div>
