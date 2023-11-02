@@ -1,11 +1,11 @@
 @extends("auth.app")
 
 @section("mainAuth")
-    <main class="min-w-full flex flex-col">
-        <div class="w-2/6 m-auto bg-white rounded-xl flex flex-col gap-0 p-5 box">
+    <main class="min-w-full flex flex-col my-6">
+        <div class="lg:w-2/6 w-5/6 m-auto bg-white rounded-xl flex flex-col gap-0 p-5 box">
             <div class="text-center text-2xl p-2">Регистрация</div>
 
-            <form class="flex flex-col p-8 gap-8" action="{{route("login.store")}}" method="post">
+            <form class="flex flex-col md:p-8 p-3 gap-8" action="{{route("login.store")}}" method="post">
                 @csrf
                 @method("post")
 
@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <input type="submit" value="Зарегистрироваться" class="bg-gray-800 w-2/3 m-auto hover:bg-black text-white p-2 rounded-lg text-lg"/>
+                <input type="submit" value="Зарегистрироваться" class="md:text-lg bg-gray-800 w-2/3 m-auto hover:bg-black text-white p-2 rounded-lg"/>
             </form>
         </div>
     </main>

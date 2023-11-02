@@ -3,10 +3,10 @@
 @section("main")
     <main class="flex flex-col w-5/6 m-auto mb-16">
         <div class="flex flex-col gap-6 justify-between mt-16 items-center min-w-full">
-            <div class="text-3xl font-light underline">
+            <div class="md:text-3xl text-2xl font-light underline">
                 Добро пожаловать, {{$login}}
             </div>
-            <form class="w-3/6 flex flex-row gap-3" action="{{route("notesAll.view")}}" method="get">
+            <form class="md:w-3/6 w-full flex flex-row gap-3" action="{{route("notesAll.view")}}" method="get">
                 @csrf
                 @method("get")
                 <input type="text" placeholder="Найти заметку" name="text"
@@ -17,11 +17,11 @@
 
         <div class="flex flex-col gap-10 mt-16 min-w-full">
             <div class="flex flex-col min-w-full">
-                <div class="text-4xl font-light">
+                <div class="md:text-4xl text-3xl md:text-left text-center font-light">
                     Последние заметки:
                 </div>
 
-                <div class="grid grid-cols-3 gap-5 min-w-full m-auto mt-6">
+                <div class="grid md:grid-cols-3 grid-cols-1 gap-5 min-w-full m-auto mt-6">
                     @foreach($notes as $note)
                         <a href="{{route("note.view", $note->id)}}" class="block min-w-full flex flex-col gap-5 bg-gray-600 text-white p-6 rounded-lg">
                             <div class="text-center text-xl font-bold underline">{{$note->user->login}}</div>
@@ -33,43 +33,43 @@
             </div>
 
             <div class="flex flex-col gap-10 min-w-full">
-                <div class="text-4xl font-light">
+                <div class="md:text-4xl text-3xl md:text-left text-center font-light">
                     Пользователи:
                 </div>
 
-                <div class="min-w-full bg-white rounded-xl p-5 flex flex-row items-start gap-10">
-                    <form class="w-2/6 flex flex-col items-stretch gap-5">
+                <div class="min-w-full bg-white rounded-xl p-5 flex md:flex-row flex-col md:items-start items-center gap-10">
+                    <form class="md:w-2/6 w-5/6 flex flex-col items-stretch gap-5">
                         <div class="text-xl min-w-full text-center underline">Поиск пользователей:</div>
 
-                        <div class="w-5/6 m-auto flex flex-col gap-2">
+                        <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Логин:</div>
                             <input type="text" placeholder="Никнейм пользователя" name="login"
                                    class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
-                        <div class="w-5/6 m-auto flex flex-col gap-2">
+                        <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Имя:</div>
                             <input type="text" placeholder="Имя" name="name"
                                    class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
-                        <div class="w-5/6 m-auto flex flex-col gap-2">
+                        <div class="md:w-5/6 w-full m-auto flex flex-col gap-2">
                             <div class="">Фамилия:</div>
                             <input type="text" placeholder="Фамилия" name="surname"
                                    class="hover:scale-105 focus:scale-105 text-center block min-w-full  p-1 rounded-xl border-2 border-gray-400 outline-none"/>
                         </div>
 
-                        <div class="flex flex-row gap-2 w-5/6 m-auto">
+                        <div class="flex flex-row gap-2 md:w-5/6 w-full m-auto">
                             <input type="button" id="findUsers" value="Найти" class="block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-black"/>
                             <input type="reset" value="Очистить" class="block w-3/6 p-2 rounded-xl bg-gray-800 text-white hover:bg-black"/>
                         </div>
                     </form>
 
-                    <div class="w-4/6 flex flex-col gap-5">
+                    <div class="md:w-4/6 w-5/6 flex flex-col gap-5">
                         <div class="text-xl min-w-full text-center underline">Результат поиска:</div>
 
                         <div class="flex flex-col gap-5" id="blocks">
-                            <div class="text-center underline font-bold text-2xl">
+                            <div class="text-center underline font-bold md:text-2xl text-xl">
                                 Попробуйте найти!
                             </div>
                         </div>
@@ -146,13 +146,13 @@
                 for (let item of jsonResult.data){
                     let block = `
                         <a href="/profile/${item.login}" class="block min-w-full bg-gray-600 p-5 rounded-md hover:scale-105 hover:bg-gray-500" href="/login">
-                            <div class="text-left text-white text-lg">
+                            <div class="text-left text-white md:text-lg">
                                 Логин: <b>${item.login}</b>
                             </div>
-                            <div class="text-left text-white text-lg">
+                            <div class="text-left text-white md:text-lg">
                                 Имя: <b>${item.name !== null?item.name:"Неизвестно"}</b>
                             </div>
-                                <div class="text-left text-white text-lg">
+                                <div class="text-left text-white md:text-lg">
                                 Фамилия: <b>${item.surname !== null?item.surname:"Неизвестно"}</b>
                             </div>
                         </a>
