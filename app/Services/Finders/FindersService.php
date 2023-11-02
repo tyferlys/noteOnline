@@ -21,11 +21,22 @@ class FindersService
         return $users->offset(4 * $data["page"])->orderByDesc("id")->limit(4)->get();
     }
 
-    public function findNotes($text){
+    public function findNotes($data){
+        $text = $data['text'];
+        $page = $data['page'];
         $notes = Note::where("title", '~', "$text")
+            ->latest()
             ->orWhere("text", '~', "$text")
+            ->offset(6 * $page)
+            ->limit(6)
             ->get();
 
-        return $notes;
+        $notesCount = Note::count();
+        $maxCount = intdiv($notesCount, 6) + 1;
+
+        return [
+            "notes" => $notes,
+            "max" => $maxCount,
+        ];
     }
 }

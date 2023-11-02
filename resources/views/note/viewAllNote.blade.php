@@ -5,7 +5,7 @@
         <div class="md:text-4xl text-2xl font-light mt-16 md:text-left text-center">
             Все заметки по заданному поиску
         </div>
-        <form class="lg:w-3/6 w-full flex flex-row gap-3" action="{{route("notesAll.view")}}" method="get">
+        <form class="lg:w-3/6 w-full flex flex-row gap-3" action="{{route("notesAll.view", 1)}}" method="get">
             @csrf
             @method("get")
             <input type="text" placeholder="Найти заметку" name="text"
@@ -13,26 +13,35 @@
             <input type="submit" value="Найти" class="block w-2/6 p-2 rounded-xl bg-gray-800 text-white"/>
         </form>
 
-        <div class="grid md:grid-cols-2 grid-cols-1 gap-3">
             @if(count($notes) > 0)
-                @foreach($notes as $note)
-                    <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
-                        <div class="md:text-xl text-lg">
-                            <b>Название</b>: {{$note->title}}
-                        </div>
-                        <div class="md:text-xl text-lg">
-                            <b>Текст</b>: {{implode(" ", array_slice(explode(" ", $note->text), 0, 15))}}
-                        </div>
-                        <div class="md:text-xl text-lg">
-                            <b>Дата создания</b>: {{$note->updated_at}}
-                        </div>
-                    </a>
-                @endforeach
+                <div class="grid md:grid-cols-2 grid-cols-1 gap-3">
+                    @foreach($notes as $note)
+                        <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
+                            <div class="md:text-xl text-lg">
+                                <b>Название</b>: {{$note->title}}
+                            </div>
+                            <div class="md:text-xl text-lg">
+                                <b>Текст</b>: {{implode(" ", array_slice(explode(" ", $note->text), 0, 15))}}
+                            </div>
+                            <div class="md:text-xl text-lg">
+                                <b>Дата создания</b>: {{$note->updated_at}}
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <div class="flex md:flex-row flex-col justify-center items-center gap-4">
+                    @if(!($page <= 1))
+                        <a class="transition hover:bg-gray-600 block md:w-2/6 w-5/6 bg-gray-800 font-bold text-center text-white p-4 rounded-lg " href="{{"?page=" . $page-1 ."&text=$text"}}">Предыдущая страница</a>
+                    @endif
+                    @if($page < $max)
+                        <a class="transition hover:bg-gray-600 block md:w-2/6 w-5/6 bg-gray-800 font-bold text-center text-white p-4 rounded-lg " href="{{"?page=" . $page+1 ."&text=$text"}}">Следующая страница</a>
+                    @endif
+                </div>
             @else
                 <div class="text-3xl bold underline">
                     Мы ничего не нашли
                 </div>
             @endif
-        </div>
     </main>
 @endsection

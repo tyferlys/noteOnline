@@ -6,7 +6,7 @@
             <div class="md:text-3xl text-2xl font-light underline">
                 Добро пожаловать, {{$login}}
             </div>
-            <form class="md:w-3/6 w-full flex flex-row gap-3" action="{{route("notesAll.view")}}" method="get">
+            <form class="md:w-3/6 w-full flex flex-row gap-3" action="{{route("notesAll.view", 1)}}" method="get">
                 @csrf
                 @method("get")
                 <input type="text" placeholder="Найти заметку" name="text"

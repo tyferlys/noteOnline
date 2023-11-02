@@ -7,7 +7,7 @@
                 @csrf
                 @method("patch")
 
-                <div class="text-center text-2xl underline mb-2">Ваши данные</div>
+                <div class="text-center text-2xl underline mb-2">Данные {{$user->login}}</div>
                 <div class="flex flex-col gap-2">
                     <div class="text-lg">Логин:</div>
                     <div class="text-center block min-w-full p-1 rounded-xl border-2 border-gray-400 outline-none">
