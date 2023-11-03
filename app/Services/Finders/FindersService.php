@@ -24,8 +24,8 @@ class FindersService
     public function findNotes($data){
         $text = $data['text'];
         $page = $data['page'];
-        $notes = Note::where("title", '~', "$text")
-            ->latest()
+        $notes = Note::latest()
+            ->where("title", '~', "$text")
             ->orWhere("text", '~', "$text")
             ->offset(6 * $page)
             ->limit(6)

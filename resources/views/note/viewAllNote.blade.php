@@ -16,17 +16,9 @@
             @if(count($notes) > 0)
                 <div class="grid md:grid-cols-2 grid-cols-1 gap-3">
                     @foreach($notes as $note)
-                        <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
-                            <div class="md:text-xl text-lg">
-                                <b>Название</b>: {{$note->title}}
-                            </div>
-                            <div class="md:text-xl text-lg">
-                                <b>Текст</b>: {{implode(" ", array_slice(explode(" ", $note->text), 0, 15))}}
-                            </div>
-                            <div class="md:text-xl text-lg">
-                                <b>Дата создания</b>: {{$note->updated_at}}
-                            </div>
-                        </a>
+                        @include("component.note", [
+                            "note" => $note,
+                        ])
                     @endforeach
                 </div>
 

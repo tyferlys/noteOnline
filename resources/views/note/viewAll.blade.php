@@ -1,24 +1,21 @@
 @extends("layout.app")
 
 @section("main")
-    <main class="flex flex-col justify-start gap-8 w-5/6 m-auto mb-16 min-h-[80vh]">
-        <div class="md:text-4xl text-3xl font-light mt-16 md:text-left text-center">
+    <main class="flex flex-col justify-start w-5/6 m-auto mb-16 min-h-[80vh]">
+        <div class="md:text-4xl text-3xl font-light mt-16 md:text-left text-center mb-4">
             Все заметки, {{$user->login}}
+        </div>
+        <div class="flex flex-row md:justify-start justify-center">
+            <a href="{{route("profile.view", $user->login)}}" class="block md:w-2/6 mb-10 bg-gray-600 text-white p-3 w-4/6 text-center rounded-lg">
+                Вернуться к профилю
+            </a>
         </div>
 
         <div class="grid md:grid-cols-2 grid-cols-1 gap-3">
             @foreach($user->notes as $note)
-                <a href="{{route("note.view", $note->id)}}" class="transition hover:scale-105 hover:bg-gray-500 block min-w-full p-6 rounded-lg bg-gray-600 text-white">
-                    <div class="md:text-xl text-lg">
-                        <b>Название</b>: {{$note->title}}
-                    </div>
-                    <div class="md:text-xl text-lg">
-                        <b>Текст</b>: {{implode(" ", array_slice(explode(" ", $note->text), 0, 15))}}
-                    </div>
-                    <div class="md:text-xl text-lg">
-                        <b>Дата создания</b>: {{$note->updated_at}}
-                    </div>
-                </a>
+                @include("component.note", [
+                    "note" => $note,
+                ])
             @endforeach
         </div>
     </main>

@@ -15,7 +15,8 @@ class IndexLikeController extends BaseController
         $likes = $this->service->like($login, $noteId);
 
         return response()->json([
-            "countLike" => count($likes),
+            "countLike" => count($likes["likes"]),
+            "statusLike" => $likes["status"],
             "status" => "true",
         ]);
     }

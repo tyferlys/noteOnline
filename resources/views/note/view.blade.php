@@ -42,10 +42,34 @@
                     </form>
                 @endif
 
+                @if($status == 0)
+                    <button id="likeBut" onclick="likeNote({{count($note->likes)}}, {{$note->id}})" class="transition hover:bg-gray-600 text-center block md:w-2/6 w-3/6 m-auto mt-5 text-lg p-2 bg-gray-800 text-white rounded-lg">
+                        @if($checkLike == true)
+                            Поставить лайк
+                        @else
+                            Убрать лайк
+                        @endif
+                    </button>
+                @endif
+
                 <div class="w-full text-center m-auto md:text-md text-sm underline mt-5">
                     Дата последнего изменения: {{$note->updated_at}}
                 </div>
             </div>
         </div>
     </main>
+    <script>
+        const likeNote = async (likes, id) => {
+            const result = await fetch(`/like/${id}`);
+            const json = await result.json();
+
+            if (json.statusLike === 0){
+                document.getElementById("likeBut").textContent = "Поставить лайк";
+            }
+            else if (json.statusLike === 1){
+                document.getElementById("likeBut").textContent = "Убрать лайк";
+            }
+
+        }
+    </script>
 @endsection

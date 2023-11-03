@@ -11,9 +11,11 @@ class ViewNoteController extends BaseController
     public function __invoke(Request $request, $noteId)
     {
         $login = $request->input("login");
-        $user = $this->service->getUser($login);
 
+        $user = $this->service->getUser($login);
         $note = $this->service->getNote($noteId);
+
+        $checkLike = $this->service->checkLike($user->id, $noteId);
 
         if ($note->user->login === $login){
             return view("note.view", [
@@ -27,6 +29,7 @@ class ViewNoteController extends BaseController
                 "user" => $user,
                 "note" => $note,
                 "status" => 0,
+                "checkLike" => $checkLike,
             ]);
         }
 
